@@ -21,7 +21,7 @@ app-install-composer:
 	docker-compose run --rm php-cli_agent composer install
 
 app-migrate:
-	docker-compose run --rm php-cli_agent php artisan migrate
+	docker-compose run --rm php-fpm php artisan migrate
 
 app-test:
 	docker-compose run --rm php-cli_agent php artisan test
@@ -29,16 +29,8 @@ app-test:
 composer-update:
 	yes | docker-compose run --rm php-cli_agent composer update
 
-db-fresh: migrate-fresh db-seed
-
-migrate-fresh:
-	docker-compose run --rm php-cli_agent php artisan migrate:fresh
-
-db-seed:
-	docker-compose run --rm php-cli_agent php artisan db:seed
-
 key-generate:
-	docker-compose run --rm php-cli_agent php artisan  key-generate
+	docker-compose run --rm php-cli_agent php artisan  key:generate
 
 doc-generate:
 	docker-compose run --rm php-cli_agent php artisan  l5-swagger:generate

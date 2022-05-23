@@ -10,7 +10,7 @@ use Illuminate\Routing\Controller as BaseController;
 /**
  * @OA\Info(
  *     version="1.0",
- *     title="Sunfinance agent api documentation"
+ *     title="Agent api documentation"
  * )
  * @OA\SecurityScheme(
  *    securityScheme="bearerAuth",

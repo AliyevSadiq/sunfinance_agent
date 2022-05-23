@@ -1,11 +1,12 @@
 <?php
 
-declare(strict_types=1);
+//declare(strict_types=1);
 
 namespace App\Services\Notification\Service\NotificationManager;
 
 use App\Services\Notification\Contract\InterfaceChannelManager;
 use App\Services\Notification\Enums\NotificationChannels;
+use Exception;
 
 class Manager implements InterfaceChannelManager
 {
@@ -27,7 +28,9 @@ class Manager implements InterfaceChannelManager
                 $manager=new SmsManager();
                 break;
             default:
-                return throw new \Exception("Manager not found");
+                $manager=null;
+//                return throw new Exception("Manager not found");
+
         }
         return $manager;
     }

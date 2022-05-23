@@ -23,6 +23,7 @@ class NotificationController extends Controller
      *     tags={"Notification"},
      *      summary="Get notification list",
      *      description="Return notifications data",
+     *      security={{"bearerAuth":{}}},
      *      @OA\Parameter(
      *          name="clientId",
      *          description="Client id",
@@ -58,6 +59,7 @@ class NotificationController extends Controller
      *      tags={"Notification"},
      *      summary="Create notification",
      *      description="Returns user data",
+     *      security={{"bearerAuth":{}}},
      *      @OA\RequestBody(
      *          required=true,
      *          @OA\JsonContent(ref="#/components/schemas/SendNotificationRequest"),
@@ -93,6 +95,7 @@ class NotificationController extends Controller
      *     tags={"Notification"},
      *      summary="Get notification information",
      *      description="Return notification data",
+     *      security={{"bearerAuth":{}}},
      *      @OA\Parameter(
      *          name="notification",
      *          description="Notification id",

@@ -11,8 +11,12 @@
 |
 */
 
+// Prefix: /api/auth
+use App\Services\Auth\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::apiResource('clients', 'ClientController')->only(['index', 'show']);
+Route::group(['prefix' => 'auth', 'as' => 'auhth.'], function () {
+    Route::post('register', [AuthController::class, 'register'])->name('register');
+    Route::post('login', [AuthController::class, 'login'])->name('login');
+    Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:sanctum')->name('logout');
 });

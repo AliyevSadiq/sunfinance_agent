@@ -2,7 +2,7 @@
 
 /*
 |--------------------------------------------------------------------------
-| Service - API Routes
+| Service - Web Routes
 |--------------------------------------------------------------------------
 |
 | Here is where you can register all of the routes for this service.
@@ -11,8 +11,13 @@
 |
 */
 
-use Illuminate\Support\Facades\Route;
+Route::group(['prefix' => 'auth'], function() {
 
-Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::apiResource('clients', 'ClientController')->only(['index', 'show']);
+    // The controllers live in src/Services/Auth/Http/Controllers
+    // Route::get('/', 'UserController@index');
+
+    Route::get('/', function() {
+        return view('auth::welcome');
+    });
+
 });

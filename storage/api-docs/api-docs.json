@@ -1,10 +1,139 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Sunfinance agent api documentation",
+        "title": "Agent api documentation",
         "version": "1.0"
     },
     "paths": {
+        "/api/auth/register": {
+            "post": {
+                "tags": [
+                    "Auth user"
+                ],
+                "summary": "Auth user",
+                "description": "Returns user data and token",
+                "operationId": "Registration user",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserRegistrationRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            }
+        },
+        "/api/auth/login": {
+            "post": {
+                "tags": [
+                    "Auth user"
+                ],
+                "summary": "Auth user",
+                "description": "Returns user data and token",
+                "operationId": "Login user",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserLoginRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            }
+        },
+        "/api/auth/logout": {
+            "post": {
+                "tags": [
+                    "Auth user"
+                ],
+                "summary": "Logout user",
+                "description": "Logout user",
+                "operationId": "Logout user",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/api/clients": {
             "get": {
                 "tags": [
@@ -30,7 +159,12 @@
                     "401": {
                         "description": "Unauthenticated"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/clients/{client}": {
@@ -72,7 +206,12 @@
                     "404": {
                         "description": "Not found"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/notification": {
@@ -111,7 +250,12 @@
                     "401": {
                         "description": "Unauthenticated"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
@@ -157,7 +301,12 @@
                             }
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/notification/{notification}": {
@@ -199,12 +348,73 @@
                     "404": {
                         "description": "Not found"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         }
     },
     "components": {
         "schemas": {
+            "UserLoginRequest": {
+                "title": "User login",
+                "description": "User login",
+                "properties": {
+                    "email": {
+                        "title": "User email",
+                        "description": "User email",
+                        "type": "string",
+                        "example": "john.doe@mail.com"
+                    },
+                    "password": {
+                        "title": "User password",
+                        "description": "User password",
+                        "type": "string",
+                        "example": "12345678"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "User login"
+                }
+            },
+            "UserRegistrationRequest": {
+                "title": "User registration",
+                "description": "User registration",
+                "properties": {
+                    "name": {
+                        "title": "User name",
+                        "description": "User name",
+                        "type": "string",
+                        "example": "John"
+                    },
+                    "email": {
+                        "title": "User email",
+                        "description": "User email",
+                        "type": "string",
+                        "example": "john.doe@mail.com"
+                    },
+                    "password": {
+                        "title": "User password",
+                        "description": "User password",
+                        "type": "string",
+                        "example": "12345678"
+                    },
+                    "password_confirmation": {
+                        "title": "User password confirmation",
+                        "description": "User password confirmation",
+                        "type": "string",
+                        "example": "12345678"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "User registration"
+                }
+            },
             "SendNotificationRequest": {
                 "title": "Send notification request",
                 "description": "Send notification request body data",

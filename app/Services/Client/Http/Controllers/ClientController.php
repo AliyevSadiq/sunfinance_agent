@@ -22,6 +22,7 @@ class ClientController extends Controller
      *       tags={"Clients"},
      *      summary="Get list of clients",
      *      description="Returns list of clients",
+     *      security={{"bearerAuth":{}}},
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
@@ -48,6 +49,7 @@ class ClientController extends Controller
      *     tags={"Clients"},
      *      summary="Get client information",
      *      description="Return client data",
+     *      security={{"bearerAuth":{}}},
      *      @OA\Parameter(
      *          name="client",
      *          description="Client id",

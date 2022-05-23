@@ -179,7 +179,8 @@ return [
         //lucid
 
        \App\Services\Client\Providers\ClientServiceProvider::class,
-        \App\Services\Notification\Providers\NotificationServiceProvider::class
+        \App\Services\Notification\Providers\NotificationServiceProvider::class,
+        \App\Services\Auth\Providers\AuthServiceProvider::class
     ],
 
     /*
