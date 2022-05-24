@@ -24,9 +24,9 @@ class RegistrationRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>['required','regex:/(^[A-Za-z ]+$)+/','min:2','max:32'],
+            'name'=>['required'],
             'email'=>['required','email','unique:users,email'],
-            'password'=>['required','string','min:8','confirmed'],
+            'password'=>['required','confirmed'],
         ];
     }
 }
