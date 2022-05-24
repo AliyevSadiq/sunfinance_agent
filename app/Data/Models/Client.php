@@ -2,6 +2,7 @@
 
 namespace App\Data\Models;
 
+use App\Services\Client\database\factories\ClientFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -20,5 +21,13 @@ class Client extends Model
     use HasFactory;
 
     protected $table='clients';
+
+    /**
+     * @return ClientFactory
+     */
+    protected static function newFactory()
+    {
+        return ClientFactory::new();
+    }
 
 }

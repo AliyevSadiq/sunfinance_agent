@@ -19,20 +19,20 @@ class RegistrationJob extends Job
      *
      * @return void
      */
-    public function __construct(string $name,string $email,string $password)
+    public function __construct(string $name, string $email, string $password)
     {
         $this->name = $name;
         $this->email = $email;
         $this->password = $password;
     }
 
-
     public function handle()
     {
-        return User::create([
-            'name' => $this->name,
-            'password' => Hash::make( $this->password),
-            'email' =>  $this->email
-        ]);
+        $user = new User();
+        $user->setName($this->name)
+            ->setEmail($this->email)
+            ->setPassword(Hash::make($this->password))
+            ->save();
+        return $user;
     }
 }

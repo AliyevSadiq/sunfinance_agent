@@ -9,7 +9,7 @@ use Faker\Factory;
 class LoginRequestTest extends TestCase
 {
 
-    /** @var \App\Domains\Auth\Requests\LoginRequest*/
+    /** @var \App\Domains\Auth\Requests\LoginRequest */
     private $rules;
 
     /** @var \Illuminate\Validation\Validator */

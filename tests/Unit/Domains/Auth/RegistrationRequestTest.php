@@ -95,7 +95,7 @@ class RegistrationRequestTest extends TestCase
 
         $this->validation_results_as_expected(false, [
             'name' => $this->faker->name,
-            'email' => $user->email,
+            'email' => $user->getEmail(),
             'password' => $password,
             'password_confirmation' => $password,
         ]);
