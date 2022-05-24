@@ -100,7 +100,7 @@ class RegistrationRequestTest extends TestCase
             'password_confirmation' => $password,
         ]);
     }
-    
+
     /**
      * @test
      * @dataProvider validationProvider
