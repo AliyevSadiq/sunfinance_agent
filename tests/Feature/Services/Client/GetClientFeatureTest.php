@@ -4,6 +4,7 @@ namespace Tests\Feature\Services\Client;
 
 use App\Data\Models\Client;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\Response;
 use Tests\TestCase;
 use Tests\Traits\TestHelper;
@@ -11,7 +12,7 @@ use Tests\Traits\TestHelper;
 class GetClientFeatureTest extends TestCase
 {
 
-    use RefreshDatabase, TestHelper;
+    use RefreshDatabase, TestHelper,WithFaker;
 
     /**
      * @var Client
@@ -32,7 +33,7 @@ class GetClientFeatureTest extends TestCase
      */
     public function feature_should_pass_when_has_access()
     {
-        $res=$this->get(route('clients.index'),$this->getHeaders());
+        $res=$this->get(route('clients.show',['client'=>$this->client->id]),$this->getHeaders());
         $res->assertStatus(Response::HTTP_OK);
     }
 
@@ -41,9 +42,7 @@ class GetClientFeatureTest extends TestCase
      */
     public function feature_should_failed_when_doesnt_have_access()
     {
-        $res=$this->get(route('clients.index'));
+        $res=$this->get(route('clients.show',['client'=>$this->client->id]));
         $res->assertStatus(Response::HTTP_FOUND);
     }
-
-
 }

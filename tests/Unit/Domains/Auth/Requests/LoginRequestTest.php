@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Domains\Auth;
+namespace Tests\Unit\Domains\Auth\Requests;
 
 use App\Domains\Auth\Requests\LoginRequest;
 use Faker\Factory;

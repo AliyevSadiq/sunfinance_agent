@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Data\Models;
 
+use App\Services\Notification\database\factories\NotificationFactory;
 use BenSampo\Enum\Enum;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -23,6 +24,15 @@ class Notification extends Model
     use HasFactory,SoftDeletes;
 
     protected $guarded=[];
+
+    /**
+     * @return NotificationFactory
+     */
+    protected static function newFactory(): NotificationFactory
+    {
+        return NotificationFactory::new();
+    }
+
 
     public function client()
     {

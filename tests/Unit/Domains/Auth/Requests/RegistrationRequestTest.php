@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Domains\Auth;
+namespace Tests\Unit\Domains\Auth\Requests;
 
 use App\Data\Models\User;
 use App\Domains\Auth\Requests\RegistrationRequest;

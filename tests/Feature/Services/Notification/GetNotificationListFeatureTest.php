@@ -2,12 +2,45 @@
 
 namespace Tests\Feature\Services\Notification;
 
+use App\Data\Models\Notification;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\Response;
 use Tests\TestCase;
+use Tests\Traits\TestHelper;
 
 class GetNotificationListFeatureTest extends TestCase
 {
-    public function test_get_notification_list_feature()
+    use RefreshDatabase, TestHelper;
+
+    /**
+     * @var Notification
+     */
+    private Notification $notification;
+
+    protected function setUp(): void
     {
-        $this->markTestIncomplete();
+        parent::setUp();
+
+        $this->addTokenToHeaders();
+
+        $this->notification = Notification::factory()->create()->first();
+    }
+
+    /**
+     * @test
+     */
+    public function feature_should_pass_when_has_access()
+    {
+        $res = $this->get(route('notification.index'), $this->getHeaders());
+        $res->assertStatus(Response::HTTP_OK);
+    }
+
+    /**
+     * @test
+     */
+    public function feature_should_failed_when_doesnt_have_access()
+    {
+        $res = $this->get(route('notification.index'));
+        $res->assertStatus(Response::HTTP_FOUND);
     }
 }
