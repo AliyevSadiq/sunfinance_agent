@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace App\Services\Notification\Service\NotificationManager;
 
 use App\Data\Models\Notification;
+use App\Jobs\PingJob;
 use App\Services\Notification\Contract\InterfaceSendNotification;
+use App\Services\Notification\Enums\NotificationStatus;
 
 class EmailManager implements InterfaceSendNotification
 {
@@ -20,8 +22,7 @@ class EmailManager implements InterfaceSendNotification
 
     public function send()
     {
-        info('user email='.$this->notification->client->email);
-        info('email content='.$this->notification->content);
+        PingJob::dispatch($this->notification,NotificationStatus::SENT,'EMAIL CHANNEL');
     }
 
 }

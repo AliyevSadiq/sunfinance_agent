@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace App\Services\Notification\Service\NotificationManager;
 
 use App\Data\Models\Notification;
+use App\Jobs\PingJob;
 use App\Services\Notification\Contract\InterfaceSendNotification;
+use App\Services\Notification\Enums\NotificationStatus;
 
 class SmsManager implements InterfaceSendNotification
 {
@@ -21,8 +23,7 @@ class SmsManager implements InterfaceSendNotification
 
     public function send()
     {
-        info('user phoneNumber='.$this->notification->client->phoneNumber);
-        info('sms content='.$this->notification->content);
+        PingJob::dispatch($this->notification,NotificationStatus::SENT,'SMS CHANNEL');
     }
 
 }

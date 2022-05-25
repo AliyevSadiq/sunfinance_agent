@@ -3,7 +3,7 @@ FROM php:7.4-cli
 RUN apt-get update && apt-get install -y libzip-dev libpq-dev zlib1g-dev zip git
 
 # Enabling && Configuring php extensions
-RUN docker-php-ext-install pdo  pgsql pdo_pgsql zip
+RUN docker-php-ext-install pdo  pgsql pdo_pgsql zip sockets
 
 # Installing composer.
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --quiet

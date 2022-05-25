@@ -12,7 +12,7 @@ RUN docker-php-ext-configure intl
 RUN docker-php-ext-configure gd
 
 # Installing php extensions
-RUN docker-php-ext-install pdo  pgsql pdo_pgsql  intl -j $(nproc) gd zip
+RUN docker-php-ext-install pdo  pgsql pdo_pgsql  intl -j $(nproc) gd zip sockets
 
 # Creating user for container.
 RUN groupadd -g 1000 appuser_agent && useradd -r -u 1000 -g appuser_agent appuser_agent

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Domains\Notification\Jobs;
 
-use App\Data\Models\Notification;
 use App\Services\Notification\Service\NotificationManager\Manager;
 use Illuminate\Database\Eloquent\Collection;
 use Lucid\Units\Job;
