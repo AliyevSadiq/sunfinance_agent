@@ -2,7 +2,7 @@
 
 namespace App\Domains\Notification\Requests;
 
-
+use App\Rules\ContentLengthRule;
 use App\Services\Notification\Enums\NotificationChannels;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -27,9 +27,10 @@ class CreateNotificationRequest extends FormRequest
     public function rules()
     {
         return [
+            'notification'=>['required','array'],
             'notification.*.clientId'=>['required','exists:clients,id'],
             'notification.*.channel'=>['required',Rule::in(NotificationChannels::getValues())],
-            'notification.*.content'=>['required']
+            'notification.*.content'=>['required',new ContentLengthRule()]
         ];
     }
 }
