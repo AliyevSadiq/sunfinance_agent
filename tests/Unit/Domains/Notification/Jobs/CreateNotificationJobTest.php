@@ -3,7 +3,6 @@
 namespace Tests\Unit\Domains\Notification\Jobs;
 
 use Tests\TestCase;
-use App\Domains\Notification\Jobs\CreateNotificationJob;
 
 class CreateNotificationJobTest extends TestCase
 {

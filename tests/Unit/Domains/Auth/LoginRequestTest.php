@@ -3,16 +3,17 @@
 namespace Tests\Unit\Domains\Auth;
 
 use App\Domains\Auth\Requests\LoginRequest;
-use Tests\TestCase;
 use Faker\Factory;
+use Illuminate\Validation\Validator;
+use Tests\TestCase;
 
 class LoginRequestTest extends TestCase
 {
 
-    /** @var \App\Domains\Auth\Requests\LoginRequest */
+    /** @var LoginRequest */
     private $rules;
 
-    /** @var \Illuminate\Validation\Validator */
+    /** @var Validator */
     private $validator;
 
     public function setUp(): void

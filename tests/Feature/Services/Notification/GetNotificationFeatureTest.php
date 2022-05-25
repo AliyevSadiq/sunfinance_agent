@@ -3,7 +3,6 @@
 namespace Tests\Feature\Services\Notification;
 
 use Tests\TestCase;
-use App\Services\Notification\Features\GetNotificationFeature;
 
 class GetNotificationFeatureTest extends TestCase
 {

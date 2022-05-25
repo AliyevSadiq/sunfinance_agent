@@ -3,7 +3,6 @@
 namespace Tests\Feature\Services\Client;
 
 use Tests\TestCase;
-use App\Services\Client\Features\GetClientListFeature;
 
 class GetClientListFeatureTest extends TestCase
 {

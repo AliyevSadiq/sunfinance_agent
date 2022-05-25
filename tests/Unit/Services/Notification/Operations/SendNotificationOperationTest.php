@@ -3,7 +3,6 @@
 namespace Tests\Unit\Services\Notification\Operations;
 
 use Tests\TestCase;
-use App\Services\Notification\Operations\SendNotificationOperation;
 
 class SendNotificationOperationTest extends TestCase
 {

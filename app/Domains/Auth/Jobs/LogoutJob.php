@@ -15,6 +15,6 @@ class LogoutJob extends Job
      */
     public function handle()
     {
-        auth()->user()->currentAccessToken()->delete();
+        auth('sanctum')->user()->currentAccessToken()->delete();
     }
 }

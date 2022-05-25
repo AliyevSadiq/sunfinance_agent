@@ -3,10 +3,10 @@
 namespace Tests\Unit\Domains\Auth\Jobs;
 
 use App\Data\Models\User;
+use App\Domains\Auth\Jobs\RegistrationJob;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
-use App\Domains\Auth\Jobs\RegistrationJob;
 
 class RegistrationJobTest extends TestCase
 {
@@ -23,16 +23,6 @@ class RegistrationJobTest extends TestCase
     private string $email;
 
     private User $user;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->name = $this->faker->name;
-        $this->email = $this->faker->email;
-        $password = $this->faker->password;
-        $job = new RegistrationJob($this->name, $this->email, $password);
-        $this->user = $job->handle();
-    }
 
     /**
      * @test
@@ -56,6 +46,16 @@ class RegistrationJobTest extends TestCase
     public function job_should_pass_when_user_email_is_exists()
     {
         $this->assertEquals($this->user->getEmail(), $this->email);
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->name = $this->faker->name;
+        $this->email = $this->faker->email;
+        $password = $this->faker->password;
+        $job = new RegistrationJob($this->name, $this->email, $password);
+        $this->user = $job->handle();
     }
 
 }
