@@ -16,7 +16,7 @@ class CreateNotificationsTable extends Migration
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('clientId')->references('id')->on('clients')->restrictOnDelete();
+            $table->foreignId('clientId')->references('id')->on('clients');
             $table->enum('channel',NotificationChannels::getValues());
             $table->text('content');
             $table->enum('status',NotificationStatus::getValues())->default(NotificationStatus::CREATED);

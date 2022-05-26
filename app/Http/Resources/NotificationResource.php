@@ -2,6 +2,8 @@
 
 namespace App\Http\Resources;
 
+use App\Data\Models\Notification;
+use App\Services\Notification\Enums\NotificationStatus;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class NotificationResource extends JsonResource
@@ -18,7 +20,7 @@ class NotificationResource extends JsonResource
            'id'=>$this->id,
            'channel'=>$this->channel,
            'client'=>new ClientResource($this->client),
-           'content'=>$this->content,
+           'content'=>$this->content
        ];
     }
 }

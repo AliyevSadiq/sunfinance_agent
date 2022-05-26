@@ -27,7 +27,7 @@ class ContentLengthRule implements Rule
     public function passes($attribute, $value)
     {
         $key=str_replace('.content','.channel',$attribute);
-        return !(request()->input($key) == NotificationChannels::SMS) || strlen($value) <= 5;
+        return !(request()->input($key) == NotificationChannels::SMS) || strlen($value) <= 140;
     }
 
     /**

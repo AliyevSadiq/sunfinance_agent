@@ -9,7 +9,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class PingJob implements ShouldQueue
+class SendNotificationJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -24,7 +24,6 @@ class PingJob implements ShouldQueue
      */
     public function __construct(Notification $notification,int $status,string $channel_type)
     {
-        //
         $this->notification = $notification;
         $this->status = $status;
         $this->channel_type = $channel_type;

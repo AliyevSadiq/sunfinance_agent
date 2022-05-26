@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Services\Notification\Service\NotificationManager;
 
 use App\Data\Models\Notification;
-use App\Jobs\PingJob;
+use App\Jobs\SendNotificationJob;
 use App\Services\Notification\Contract\InterfaceSendNotification;
 use App\Services\Notification\Enums\NotificationStatus;
 
@@ -15,14 +15,16 @@ class EmailManager implements InterfaceSendNotification
 
     public function setNotification(Notification $notification): self
     {
-        $this->notification=$notification;
+        $this->notification = $notification;
         return $this;
     }
 
-
     public function send()
     {
-        PingJob::dispatch($this->notification,NotificationStatus::SENT,'EMAIL CHANNEL');
+        try {
+            SendNotificationJob::dispatch($this->notification, NotificationStatus::SENT, 'EMAIL CHANNEL');
+        } catch (\Exception $exception) {
+            info($exception->getMessage());
+        }
     }
-
 }

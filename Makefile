@@ -23,6 +23,9 @@ app-install-composer:
 app-migrate:
 	docker-compose run --rm php-fpm php artisan migrate
 
+app-rabbitmq:
+	docker-compose run --rm php-fpm php artisan rabbitmq:consume
+
 app-test:
 	docker-compose run --rm php-cli_agent php artisan test
 
