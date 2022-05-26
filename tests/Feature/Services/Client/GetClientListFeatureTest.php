@@ -17,21 +17,12 @@ class GetClientListFeatureTest extends TestCase
      */
     private Client $client;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->addTokenToHeaders();
-
-        $this->client=Client::factory()->create()->first();
-    }
-
     /**
      * @test
      */
     public function feature_should_pass_when_has_access()
     {
-        $res=$this->get(route('clients.index'),$this->getHeaders());
+        $res = $this->get(route('clients.index'), $this->getHeaders());
         $res->assertStatus(Response::HTTP_OK);
     }
 
@@ -40,7 +31,16 @@ class GetClientListFeatureTest extends TestCase
      */
     public function feature_should_failed_when_doesnt_have_access()
     {
-        $res=$this->get(route('clients.index'));
+        $res = $this->get(route('clients.index'));
         $res->assertStatus(Response::HTTP_FOUND);
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->addTokenToHeaders();
+
+        $this->client = Client::factory()->create()->first();
     }
 }

@@ -27,10 +27,10 @@ class CreateNotificationRequest extends FormRequest
     public function rules()
     {
         return [
-            'notification'=>['required','array'],
-            'notification.*.clientId'=>['required','exists:clients,id'],
-            'notification.*.channel'=>['required',Rule::in(NotificationChannels::getValues())],
-            'notification.*.content'=>['required',new ContentLengthRule()]
+            'notification' => ['required', 'array'],
+            'notification.*.clientId' => ['required', 'exists:clients,id'],
+            'notification.*.channel' => ['required', Rule::in(NotificationChannels::getValues())],
+            'notification.*.content' => ['required', new ContentLengthRule()]
         ];
     }
 }

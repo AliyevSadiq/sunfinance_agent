@@ -11,12 +11,12 @@
 |
 */
 
-Route::group(['prefix' => 'client'], function() {
+Route::group(['prefix' => 'client'], function () {
 
     // The controllers live in src/Services/Client/Http/Controllers
     // Route::get('/', 'UserController@index');
 
-    Route::get('/', function() {
+    Route::get('/', function () {
         return view('client::welcome');
     });
 

@@ -29,10 +29,10 @@ class AuthServiceProvider extends ServiceProvider
     }
 
     /**
-    * Register the Auth service provider.
-    *
-    * @return void
-    */
+     * Register the Auth service provider.
+     *
+     * @return void
+     */
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
@@ -51,9 +51,9 @@ class AuthServiceProvider extends ServiceProvider
         // Translation must be registered ahead of adding lang namespaces
         $this->app->register(TranslationServiceProvider::class);
 
-        Lang::addNamespace('auth', realpath(__DIR__.'/../resources/lang'));
+        Lang::addNamespace('auth', realpath(__DIR__ . '/../resources/lang'));
 
         View::addNamespace('auth', base_path('resources/views/vendor/auth'));
-        View::addNamespace('auth', realpath(__DIR__.'/../resources/views'));
+        View::addNamespace('auth', realpath(__DIR__ . '/../resources/views'));
     }
 }

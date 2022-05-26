@@ -17,15 +17,6 @@ class GetNotificationListFeatureTest extends TestCase
      */
     private Notification $notification;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->addTokenToHeaders();
-
-        $this->notification = Notification::factory()->create()->first();
-    }
-
     /**
      * @test
      */
@@ -42,5 +33,14 @@ class GetNotificationListFeatureTest extends TestCase
     {
         $res = $this->get(route('notification.index'));
         $res->assertStatus(Response::HTTP_FOUND);
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->addTokenToHeaders();
+
+        $this->notification = Notification::factory()->create()->first();
     }
 }

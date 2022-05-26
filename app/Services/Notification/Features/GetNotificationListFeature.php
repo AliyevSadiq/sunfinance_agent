@@ -13,9 +13,9 @@ class GetNotificationListFeature extends Feature
 {
     public function handle(Request $request)
     {
-       $notifications=$this->run(GetNotificationListJob::class,[
-           'clientId'=>$request->get('clientId')
-       ]);
-       return NotificationResource::collection($notifications);
+        $notifications = $this->run(GetNotificationListJob::class, [
+            'clientId' => $request->get('clientId')
+        ]);
+        return NotificationResource::collection($notifications);
     }
 }

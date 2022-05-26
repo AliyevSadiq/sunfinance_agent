@@ -10,7 +10,8 @@ class UserFactory extends Factory
 {
 
 
-    protected $model=User::class;
+    protected $model = User::class;
+
     /**
      * Define the model's default state.
      *
@@ -19,9 +20,9 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name'=>$this->faker->name,
-            'email'=>$this->faker->email,
-            'password'=>Hash::make('12345678'),
+            'name' => $this->faker->name,
+            'email' => $this->faker->email,
+            'password' => Hash::make('12345678'),
         ];
     }
 }

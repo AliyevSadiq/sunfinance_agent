@@ -5,6 +5,7 @@ namespace Tests\Unit\Domains\Notification\Jobs;
 use App\Data\Models\Notification;
 use App\Domains\Notification\Jobs\GetNotificationListJob;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -14,7 +15,7 @@ class GetNotificationListJobTest extends TestCase
     use RefreshDatabase, WithFaker;
 
     /**
-     * @var Collection|\Illuminate\Database\Eloquent\Model
+     * @var Collection|Model
      */
     private Collection $notifications;
 
@@ -22,13 +23,6 @@ class GetNotificationListJobTest extends TestCase
      * @var int
      */
     private int $client_id;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->notifications = Notification::factory(10)->create()->sortByDesc('id');
-        $this->client_id = $this->notifications->first()->clientId;
-    }
 
     /**
      * @test
@@ -52,5 +46,12 @@ class GetNotificationListJobTest extends TestCase
     public function job_should_failed_when_notification_list_is_empty_by_client_id()
     {
         $this->assertEmpty((new GetNotificationListJob($this->faker->numberBetween(11, 20)))->handle());
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->notifications = Notification::factory(10)->create()->sortByDesc('id');
+        $this->client_id = $this->notifications->first()->clientId;
     }
 }

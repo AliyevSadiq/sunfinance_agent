@@ -8,16 +8,17 @@ use App\Services\Notification\Enums\NotificationChannels;
 use Faker\Factory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Validation\Validator;
 use Tests\TestCase;
 
 class CreateNotificationRequestTest extends TestCase
 {
     use WithFaker, RefreshDatabase;
 
-    /** @var \App\Domains\Notification\Requests\CreateNotificationRequest */
+    /** @var CreateNotificationRequest */
     private $rules;
 
-    /** @var \Illuminate\Validation\Validator */
+    /** @var Validator */
     private $validator;
 
     public function setUp(): void
@@ -100,24 +101,6 @@ class CreateNotificationRequestTest extends TestCase
 
     /**
      * @test
-     */
-    public function request_should_pass_when_all_rules_valid()
-    {
-        $client = Client::factory()->create()->first();
-
-        $this->validation_results_as_expected(true, [
-            'notification' => [
-                [
-                    'clientId' => $client->id,
-                    'channel' => NotificationChannels::EMAIL,
-                    'content' => $this->faker->paragraph
-                ]
-            ]
-        ]);
-    }
-
-    /**
-     * @test
      * @dataProvider validationProvider
      * @param bool $shouldPass
      * @param array $mockedRequestData
@@ -133,5 +116,23 @@ class CreateNotificationRequestTest extends TestCase
     protected function validate($mockedRequestData)
     {
         return $this->validator->make($mockedRequestData, $this->rules)->passes();
+    }
+
+    /**
+     * @test
+     */
+    public function request_should_pass_when_all_rules_valid()
+    {
+        $client = Client::factory()->create()->first();
+
+        $this->validation_results_as_expected(true, [
+            'notification' => [
+                [
+                    'clientId' => $client->id,
+                    'channel' => NotificationChannels::EMAIL,
+                    'content' => $this->faker->paragraph
+                ]
+            ]
+        ]);
     }
 }

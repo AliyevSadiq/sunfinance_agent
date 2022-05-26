@@ -22,7 +22,7 @@ class SendNotificationJob implements ShouldQueue
      *
      * @return void
      */
-    public function __construct(Notification $notification,int $status,string $channel_type)
+    public function __construct(Notification $notification, int $status, string $channel_type)
     {
         $this->notification = $notification;
         $this->status = $status;

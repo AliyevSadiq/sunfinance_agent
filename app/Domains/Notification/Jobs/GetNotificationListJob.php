@@ -16,7 +16,7 @@ class GetNotificationListJob extends Job
      *
      * @return void
      */
-    public function __construct(?int $clientId=null)
+    public function __construct(?int $clientId = null)
     {
         $this->clientId = $clientId;
     }
@@ -25,8 +25,8 @@ class GetNotificationListJob extends Job
     public function handle()
     {
         return Notification::with('client')
-            ->when(isset($this->clientId),function ($query){
-                $query->where('clientId',$this->clientId);
+            ->when(isset($this->clientId), function ($query) {
+                $query->where('clientId', $this->clientId);
             })->paginate(10);
     }
 }

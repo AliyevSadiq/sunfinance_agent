@@ -23,6 +23,6 @@ class GetUserJob extends Job
 
     public function handle()
     {
-        return User::where('email',$this->email)->first();
+        return User::where('email', $this->email)->first();
     }
 }

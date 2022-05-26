@@ -24,15 +24,6 @@ class User extends Authenticatable
     protected $table = 'users';
 
     protected $guarded = [];
-
-    /**
-     * @return UserFactory
-     */
-    protected static function newFactory()
-    {
-        return UserFactory::new();
-    }
-
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -42,6 +33,14 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    /**
+     * @return UserFactory
+     */
+    protected static function newFactory()
+    {
+        return UserFactory::new();
+    }
 
     /**
      * @return int

@@ -12,12 +12,6 @@ class LogoutFeatureTest extends TestCase
 
     use RefreshDatabase, TestHelper;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->addTokenToHeaders();
-    }
-
     /**
      * @test
      */
@@ -34,5 +28,11 @@ class LogoutFeatureTest extends TestCase
     {
         $response = $this->json('POST', route('auth.logout'), []);
         $response->assertStatus(Response::HTTP_UNAUTHORIZED);
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->addTokenToHeaders();
     }
 }

@@ -12,8 +12,8 @@ class SendNotificationFeature extends Feature
 {
     public function handle(CreateNotificationRequest $request)
     {
-      return $this->run(SendNotificationOperation::class,[
-          'notifications'=>$request->notification
-      ]);
+        return $this->run(SendNotificationOperation::class, [
+            'notifications' => $request->notification
+        ]);
     }
 }

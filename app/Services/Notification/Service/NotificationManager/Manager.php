@@ -6,7 +6,6 @@ namespace App\Services\Notification\Service\NotificationManager;
 
 use App\Services\Notification\Contract\InterfaceChannelManager;
 use App\Services\Notification\Enums\NotificationChannels;
-use Exception;
 
 class Manager implements InterfaceChannelManager
 {
@@ -22,13 +21,13 @@ class Manager implements InterfaceChannelManager
     {
         switch ($this->channel) {
             case NotificationChannels::EMAIL:
-                $manager=new EmailManager();
+                $manager = new EmailManager();
                 break;
             case NotificationChannels::SMS:
-                $manager=new SmsManager();
+                $manager = new SmsManager();
                 break;
             default:
-                $manager=null;
+                $manager = null;
 //                return throw new Exception("Manager not found");
 
         }

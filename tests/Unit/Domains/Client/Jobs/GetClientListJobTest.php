@@ -14,17 +14,17 @@ class GetClientListJobTest extends TestCase
 
     private $clients;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->clients = Client::factory(10)->create();
-    }
-
     /**
      * @test
      */
     public function job_should_pass_when_is_not_empty()
     {
         $this->assertNotEmpty((new GetClientListJob())->handle());
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->clients = Client::factory(10)->create();
     }
 }

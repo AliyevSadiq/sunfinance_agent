@@ -6,8 +6,8 @@ namespace App\Data\Models;
 
 use App\Services\Notification\database\factories\NotificationFactory;
 use BenSampo\Enum\Enum;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -21,9 +21,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Notification extends Model
 {
 
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes;
 
-    protected $guarded=[];
+    protected $guarded = [];
 
     /**
      * @return NotificationFactory
@@ -36,7 +36,7 @@ class Notification extends Model
 
     public function client()
     {
-        return $this->belongsTo(Client::class,'clientId');
+        return $this->belongsTo(Client::class, 'clientId');
     }
 
 }

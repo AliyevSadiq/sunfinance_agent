@@ -1,13 +1,11 @@
 <?php
 
 
-
 namespace App\Services\Client\Features;
 
 use App\Data\Models\Client;
 use App\Http\Resources\ClientResource;
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\JsonResource;
 use Lucid\Domains\Http\Jobs\RespondWithJsonJob;
 use Lucid\Units\Feature;
 

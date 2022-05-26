@@ -6,6 +6,6 @@ use BenSampo\Enum\Enum;
 
 final class NotificationChannels extends Enum
 {
-  public const SMS='sms';
-  public const EMAIL='email';
+    public const SMS = 'sms';
+    public const EMAIL = 'email';
 }

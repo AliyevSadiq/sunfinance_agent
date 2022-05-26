@@ -11,12 +11,12 @@
 |
 */
 
-Route::group(['prefix' => 'notification'], function() {
+Route::group(['prefix' => 'notification'], function () {
 
     // The controllers live in src/Services/Notification/Http/Controllers
     // Route::get('/', 'UserController@index');
 
-    Route::get('/', function() {
+    Route::get('/', function () {
         return view('notification::welcome');
     });
 

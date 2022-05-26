@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Services\Notification\Contract;
 
-use App\Data\Models\Client;
-
 interface InterfaceChannelManager
 {
 

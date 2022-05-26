@@ -17,21 +17,12 @@ class GetNotificationFeatureTest extends TestCase
      */
     private Notification $notification;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->addTokenToHeaders();
-
-        $this->notification = Notification::factory()->create()->first();
-    }
-
     /**
      * @test
      */
     public function feature_should_pass_when_has_access()
     {
-        $res = $this->get(route('notification.show',['notification'=>$this->notification->id]), $this->getHeaders());
+        $res = $this->get(route('notification.show', ['notification' => $this->notification->id]), $this->getHeaders());
         $res->assertStatus(Response::HTTP_OK);
     }
 
@@ -40,7 +31,16 @@ class GetNotificationFeatureTest extends TestCase
      */
     public function feature_should_failed_when_doesnt_have_access()
     {
-        $res = $this->get(route('notification.show',['notification'=>$this->notification->id]));
+        $res = $this->get(route('notification.show', ['notification' => $this->notification->id]));
         $res->assertStatus(Response::HTTP_FOUND);
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->addTokenToHeaders();
+
+        $this->notification = Notification::factory()->create()->first();
     }
 }

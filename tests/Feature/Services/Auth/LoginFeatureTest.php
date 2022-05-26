@@ -13,12 +13,6 @@ class LoginFeatureTest extends TestCase
 
     private User $user;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->user = User::factory()->create()->first();
-    }
-
     /**
      * @test
      */
@@ -41,5 +35,11 @@ class LoginFeatureTest extends TestCase
             'password' => '1234567',
         ]);
         $res->assertStatus(Response::HTTP_UNAUTHORIZED);
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->user = User::factory()->create()->first();
     }
 }

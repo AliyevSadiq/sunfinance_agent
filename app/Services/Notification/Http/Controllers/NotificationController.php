@@ -5,11 +5,7 @@ declare(strict_types=1);
 namespace App\Services\Notification\Http\Controllers;
 
 use App\Data\Models\Notification;
-use App\Services\Notification\Features\{
-    GetNotificationFeature,
-    GetNotificationListFeature,
-    SendNotificationFeature
-};
+use App\Services\Notification\Features\{GetNotificationFeature, GetNotificationListFeature, SendNotificationFeature};
 use App\Traits\WithTransaction;
 use Lucid\Units\Controller;
 
@@ -86,7 +82,7 @@ class NotificationController extends Controller
      */
     public function store()
     {
-      return $this->serveFeature(SendNotificationFeature::class);
+        return $this->serveFeature(SendNotificationFeature::class);
     }
 
     /**
@@ -126,8 +122,8 @@ class NotificationController extends Controller
      */
     public function show(Notification $notification)
     {
-        return $this->serveFeature(GetNotificationFeature::class,[
-            'notification'=>$notification
+        return $this->serveFeature(GetNotificationFeature::class, [
+            'notification' => $notification
         ]);
     }
 }

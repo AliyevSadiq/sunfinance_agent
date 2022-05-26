@@ -26,16 +26,6 @@ class NotificationTest extends TestCase
      */
     private string $email;
 
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->user = new User();
-        $this->name = $this->faker->name;
-        $this->email = $this->faker->email;
-    }
-
-
     /** @test */
     public function can_get_name(): void
     {
@@ -50,5 +40,13 @@ class NotificationTest extends TestCase
         $this->user->setEmail($this->email);
 
         $this->assertEquals($this->user->getEmail(), $this->email);
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->user = new User();
+        $this->name = $this->faker->name;
+        $this->email = $this->faker->email;
     }
 }

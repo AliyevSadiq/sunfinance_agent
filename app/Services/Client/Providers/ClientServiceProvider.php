@@ -29,10 +29,10 @@ class ClientServiceProvider extends ServiceProvider
     }
 
     /**
-    * Register the Client service provider.
-    *
-    * @return void
-    */
+     * Register the Client service provider.
+     *
+     * @return void
+     */
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
@@ -51,9 +51,9 @@ class ClientServiceProvider extends ServiceProvider
         // Translation must be registered ahead of adding lang namespaces
         $this->app->register(TranslationServiceProvider::class);
 
-        Lang::addNamespace('client', realpath(__DIR__.'/../resources/lang'));
+        Lang::addNamespace('client', realpath(__DIR__ . '/../resources/lang'));
 
         View::addNamespace('client', base_path('resources/views/vendor/client'));
-        View::addNamespace('client', realpath(__DIR__.'/../resources/views'));
+        View::addNamespace('client', realpath(__DIR__ . '/../resources/views'));
     }
 }

@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Domains\Notification\Jobs;
 
 use App\Data\Models\Notification;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Lucid\Units\Job;
 
 class GetLastNotificationJob extends Job
@@ -22,7 +24,7 @@ class GetLastNotificationJob extends Job
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     * @return Builder[]|Collection
      */
     public function handle()
     {

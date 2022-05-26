@@ -5,10 +5,7 @@ declare(strict_types=1);
 namespace App\Services\Client\Http\Controllers;
 
 use App\Data\Models\Client;
-use App\Services\Client\Features\{
-    GetClientFeature,
-    GetClientListFeature
-};
+use App\Services\Client\Features\{GetClientFeature, GetClientListFeature};
 use App\Traits\WithTransaction;
 use Lucid\Units\Controller;
 

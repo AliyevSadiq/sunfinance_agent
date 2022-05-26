@@ -8,6 +8,7 @@ use App\Data\Models\Notification;
 use App\Jobs\SendNotificationJob;
 use App\Services\Notification\Contract\InterfaceSendNotification;
 use App\Services\Notification\Enums\NotificationStatus;
+use Exception;
 
 class SmsManager implements InterfaceSendNotification
 {
@@ -23,7 +24,7 @@ class SmsManager implements InterfaceSendNotification
     {
         try {
             SendNotificationJob::dispatch($this->notification, NotificationStatus::SENT, 'SMS CHANNEL');
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             info($exception->getMessage());
         }
     }

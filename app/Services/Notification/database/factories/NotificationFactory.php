@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class NotificationFactory extends Factory
 {
-    protected $model=Notification::class;
+    protected $model = Notification::class;
+
     /**
      * Define the model's default state.
      *
@@ -18,9 +19,9 @@ class NotificationFactory extends Factory
     public function definition()
     {
         return [
-            'clientId'=>Client::factory()->create()->first()->id,
-            'channel'=>$this->faker->randomElement(NotificationChannels::getValues()),
-            'content'=>$this->faker->text(100)
+            'clientId' => Client::factory()->create()->first()->id,
+            'channel' => $this->faker->randomElement(NotificationChannels::getValues()),
+            'content' => $this->faker->text(100)
         ];
     }
 }

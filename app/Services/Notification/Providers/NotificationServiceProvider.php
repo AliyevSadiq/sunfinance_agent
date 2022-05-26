@@ -29,10 +29,10 @@ class NotificationServiceProvider extends ServiceProvider
     }
 
     /**
-    * Register the Notification service provider.
-    *
-    * @return void
-    */
+     * Register the Notification service provider.
+     *
+     * @return void
+     */
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
@@ -51,9 +51,9 @@ class NotificationServiceProvider extends ServiceProvider
         // Translation must be registered ahead of adding lang namespaces
         $this->app->register(TranslationServiceProvider::class);
 
-        Lang::addNamespace('notification', realpath(__DIR__.'/../resources/lang'));
+        Lang::addNamespace('notification', realpath(__DIR__ . '/../resources/lang'));
 
         View::addNamespace('notification', base_path('resources/views/vendor/notification'));
-        View::addNamespace('notification', realpath(__DIR__.'/../resources/views'));
+        View::addNamespace('notification', realpath(__DIR__ . '/../resources/views'));
     }
 }

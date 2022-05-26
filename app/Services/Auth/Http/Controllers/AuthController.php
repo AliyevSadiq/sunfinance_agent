@@ -12,6 +12,7 @@ class AuthController extends Controller
 {
 
     use WithTransaction;
+
     /**
      * @OA\Post(
      *      path="/api/auth/register",
@@ -45,7 +46,7 @@ class AuthController extends Controller
      */
     public function register()
     {
-      return $this->serveFeature(RegistrationFeature::class);
+        return $this->serveFeature(RegistrationFeature::class);
     }
 
     /**
