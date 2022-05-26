@@ -7,7 +7,6 @@ namespace App\Data\Models;
 use App\Services\Auth\database\factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 
 /**
@@ -103,7 +102,4 @@ class User extends Authenticatable
         $this->password = $password;
         return $this;
     }
-
-
-
 }

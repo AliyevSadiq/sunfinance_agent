@@ -38,3 +38,6 @@ For running tests execute:
 ```console
 $ make app-test
 ```
+
+
+For working with rabbitmq added connection parameters in .env.example 
